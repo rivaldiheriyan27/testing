@@ -41,6 +41,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //   res.io = io;
 //   next();
 // });
+app.get('/', (req, res) => {
+  res.status(200).send("Welcome to api backend testing")
+})
 app.use("/", router);
 
 module.exports = app;
