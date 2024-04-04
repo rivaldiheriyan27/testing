@@ -12,10 +12,10 @@ const bodyParser = require("body-parser");
 const http = require("http");
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {},
-});
-app.use(cors());
+// const io = new Server(server, {
+//   cors: {},
+// });
+// app.use(cors());
 
 // no mount path; executed for every request.
 app.use(function (req, res, next) {
@@ -37,10 +37,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
-app.use((req, res, next) => {
-  res.io = io;
-  next();
-});
+// app.use((req, res, next) => {
+//   res.io = io;
+//   next();
+// });
 app.use("/", router);
 
 module.exports = app;

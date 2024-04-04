@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "Sicana_Services",
-    "host": "127.0.0.1",
+    "host": "postgres-testing",
     "dialect": "postgres"
   },
   "test": {
