@@ -1,18 +1,22 @@
-version: "3"
+version: '3'
 services:
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: Sicana_Services
-    ports:
-      - "5432:5432"
-  app:
+  testing-new:
+    container_name: be-testing-new
     build: .
-    depends_on:
-      - db
     ports:
-      - "3000:3000"
+      - "49160:3000"
+    stdin_open: true
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/Sicana_Services
+      DB_USER: postgres
+      DB_HOST: host.docker.internal
+      DB_DATABASE: Sicana_Services
+      DB_PASSWORD: postgres
+    restart: always
+    networks:
+      - networks-testing-new
+    command: npm start
+networks:
+  networks-testing-new:
+  ipam:
+    driver: default
+    
